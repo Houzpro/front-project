@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Чат-мессенджер (React + WebSocket)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание
 
-## Available Scripts
+Это проект мессенджера на React с поддержкой групповых и личных чатов, аватаров, смайликов и тем оформления. Для обмена сообщениями используется WebSocket-сервер на Node.js.
 
-In the project directory, you can run:
+## Возможности
 
-### `npm start`
+- Вход по уникальному имени пользователя (аватар опционально)
+- Список чатов и пользователей в едином списке
+- Групповые чаты (создание, выбор участников)
+- Личные чаты (открываются по клику на пользователя)
+- Отправка и получение сообщений в реальном времени
+- Аватары пользователей и групп
+- Смайлики (панель эмодзи)
+- Светлая и тёмная тема
+- Редактирование профиля (аватар)
+- Мини-карточка пользователя в групповых чатах (по клику на имя в сообщении)
+- Адаптивный интерфейс
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Быстрый старт
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. Установка зависимостей
 
-### `npm test`
+```sh
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. Запуск сервера
 
-### `npm run build`
+Создайте файл `server.js` (или используйте свой) с поддержкой WebSocket и логикой "выкидывания" старого пользователя при повторном входе с тем же именем.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Пример запуска:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+node server.js
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. Запуск клиента
 
-### `npm run eject`
+```sh
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Откройте [http://localhost:3000](http://localhost:3000) в браузере.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Структура проекта
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `src/App.js` — основной компонент приложения
+- `src/App.css` — стили приложения
+- `src/index.js` — точка входа React
+- `chat-data.json` — данные пользователей, чатов и сообщений (используется сервером)
+- `server.js` — WebSocket сервер (реализуйте по примеру в README)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Важно
 
-## Learn More
+- Для корректной работы логина сервер должен "выкидывать" старого пользователя при повторном входе с тем же именем.
+- Все данные (пользователи, чаты, сообщения) хранятся в `chat-data.json` на сервере.
+- При удалении пользователя сервер удаляет его из всех чатов.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
